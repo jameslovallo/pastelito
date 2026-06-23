@@ -22,6 +22,7 @@ body {
 
 body {
   font-family: sans-serif;
+  user-select: none;
 }
 
 * {
