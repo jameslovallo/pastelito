@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Cinzel";
+  src: url("Cinzel.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   --rose-gold: #fc8;
   --slate-gray: #222;
@@ -71,7 +79,9 @@ main {
   width: 100vw;
 
   h2 {
+    font-family: Cinzel;
     font-size: 1.25rem;
+    font-weight: 400;
     text-align: center;
   }
 
