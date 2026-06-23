@@ -6,7 +6,7 @@ const token =
   "patUED7XMxFnHAeuv.a8c6ecafc557d00587a247e0d38b82044feb8af68758c5d632ac2109659c098d";
 
 const getRecords = (table, id = "") =>
-  fetch(`${api}/${base}/${table + (id ? "/" + id : "")}`, {
+  fetch(`${api}/${base}/${table + (id ? "/" + id : "")}?view=Grid%20view`, {
     headers: { Authorization: `Bearer ${token}` },
   }).then((res) => res.json());
 
@@ -98,10 +98,11 @@ customElements.define(
       const title = this.getAttribute("title");
       const status = Number(this.getAttribute("status"));
       const goal = Number(this.getAttribute("goal"));
+      const icon = this.getAttribute("icon");
       const tokens = Number(this.getAttribute("tokens"));
       this.shadowRoot.innerHTML = `
         <div class="icon">
-          <slot></slot>
+          <img src="${icon}">
         </div>
         <div class="text">${title}</div>
         <div class="status">${status}/${goal}</div>
@@ -140,6 +141,14 @@ customElements.define(
               align-items: center;
               display: flex;
               padding: 0.75rem;
+            }
+
+            .icon {
+              padding: 0.5rem;
+
+              img {
+                width: 40px;
+              }
             }
 
             button {
@@ -188,15 +197,11 @@ customElements.define(
 const initHabits = async () => {
   const { records } = await getRecords(habitsTable);
   habitsElement.innerHTML = "";
-  records.forEach(
-    ({ id, fields: { Habit, Status, Goal, Tokens, Punishments, Icon } }) => {
-      habitsElement.innerHTML += `
-      <habit-element id=${id} title="${Habit}" status="${Status}" goal="${Goal}" tokens="${Tokens}">
-        ${Icon}
-      </habit-element>
+  records.forEach(({ id, fields: { Habit, Status, Goal, Tokens, Icon } }) => {
+    habitsElement.innerHTML += `
+      <habit-element id=${id} title="${Habit}" status="${Status}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
     `;
-    },
-  );
+  });
 };
 
 initHabits();
@@ -300,12 +305,8 @@ const initRewards = async () => {
   const rewardsAvailable = document.querySelector("#rewards-available");
   const rewardsHeadings = document.querySelectorAll("#rewards h2");
   const { records } = await getRecords(rewardsTable);
-  const requested = records
-    .filter((reward) => reward.fields.Requested)
-    .sort((a, b) => a.fields.Tokens > b.fields.Tokens);
-  const available = records
-    .filter((reward) => !reward.fields.Requested)
-    .sort((a, b) => a.fields.Tokens > b.fields.Tokens);
+  const requested = records.filter((reward) => reward.fields.Requested);
+  const available = records.filter((reward) => !reward.fields.Requested);
   rewardsRequested.style.display = requested.length ? "flex" : "none";
   rewardsHeadings[0].style.display = requested.length ? "block" : "none";
   rewardsRequested.innerHTML = "";
@@ -422,12 +423,10 @@ const initPunishments = async () => {
   const punishmentsAvailable = document.querySelector("#punishments-available");
   const punishmentsHeadings = document.querySelectorAll("#punishments h2");
   const { records } = await getRecords(punishmentsTable);
-  const requested = records
-    .filter((punishment) => punishment.fields.Requested)
-    .sort((a, b) => a.fields.Value > b.fields.Value);
-  const available = records
-    .filter((punishment) => !punishment.fields.Requested)
-    .sort((a, b) => a.fields.Value > b.fields.Value);
+  const requested = records.filter((punishment) => punishment.fields.Requested);
+  const available = records.filter(
+    (punishment) => !punishment.fields.Requested,
+  );
   punishmentsRequested.style.display = requested.length ? "flex" : "none";
   punishmentsHeadings[0].style.display = requested.length ? "block" : "none";
   punishmentsRequested.innerHTML = "";
