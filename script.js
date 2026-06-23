@@ -195,11 +195,26 @@ customElements.define(
 );
 
 const initHabits = async () => {
+  const dailyHabits = document.querySelector("#daily-habits");
+  const weeklyHabits = document.querySelector("#weekly-habits");
+  const habitsHeadings = document.querySelectorAll("#habits h2");
   const { records } = await getRecords(habitsTable);
-  habitsElement.innerHTML = "";
-  records.forEach(({ id, fields: { Habit, Status, Goal, Tokens, Icon } }) => {
-    habitsElement.innerHTML += `
-      <habit-element id=${id} title="${Habit}" status="${Status}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
+  const daily = records.filter((habit) => habit.fields.Period === "Daily");
+  const weekly = records.filter((habit) => habit.fields.Period === "Weekly");
+  dailyHabits.style.display = daily.length ? "flex" : "none";
+  habitsHeadings[0].style.display = daily.length ? "block" : "none";
+  dailyHabits.innerHTML = "";
+  daily.forEach(({ id, fields: { Habit, Tokens, Goal, Icon } }) => {
+    dailyHabits.innerHTML += `
+      <habit-element id=${id} title="${Habit}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
+    `;
+  });
+  weeklyHabits.style.display = weekly.length ? "flex" : "none";
+  habitsHeadings[1].style.display = weekly.length ? "block" : "none";
+  weeklyHabits.innerHTML = "";
+  weekly.forEach(({ id, fields: { Habit, Tokens, Goal, Icon } }) => {
+    weeklyHabits.innerHTML += `
+      <habit-element id=${id} title="${Habit}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
     `;
   });
 };

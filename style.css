@@ -95,9 +95,10 @@ main {
     padding: 1rem;
   }
 
-  #daily-habits,
   #rewards-requested,
   #rewards-available,
+  #daily-habits,
+  #weekly-habits,
   #punishments-requested,
   #punishments-available {
     display: flex;
