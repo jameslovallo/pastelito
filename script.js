@@ -87,18 +87,18 @@ tabs.forEach((tab, i) => {
 // habits
 
 const habitsTable = "tblPLgExBWfHgxOHb";
-const habitsElement = document.querySelector("#daily-habits");
 
 customElements.define(
   "habit-element",
   class habitElement extends HTMLElement {
     constructor() {
       super().attachShadow({ mode: "open" });
-      const id = this.getAttribute("id");
-      const title = this.getAttribute("title");
-      const status = Number(this.getAttribute("status"));
       const goal = Number(this.getAttribute("goal"));
       const icon = this.getAttribute("icon");
+      const id = this.getAttribute("id");
+      const period = this.getAttribute("period");
+      const status = Number(this.getAttribute("status"));
+      const title = this.getAttribute("title");
       const tokens = Number(this.getAttribute("tokens"));
       this.shadowRoot.innerHTML = `
         <div class="icon">
@@ -113,7 +113,7 @@ customElements.define(
             />
           </svg>
         </button>
-        <button class="reset" hidden="${status !== goal}">
+        <button class="reset" hidden="${status !== goal || period === "Weekly"}">
           <svg viewBox="0 0 24 24">
             <path
               d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"
@@ -179,7 +179,7 @@ customElements.define(
       addButton.addEventListener("click", async () => {
         if (status < goal) {
           updateStatus(status + 1);
-          if (status + 1 === goal) {
+          if (period === "Weekly" || status + 1 === goal) {
             updateTokens(tokens);
           }
         }
@@ -204,19 +204,39 @@ const initHabits = async () => {
   dailyHabits.style.display = daily.length ? "flex" : "none";
   habitsHeadings[0].style.display = daily.length ? "block" : "none";
   dailyHabits.innerHTML = "";
-  daily.forEach(({ id, fields: { Habit, Tokens, Goal, Icon } }) => {
-    dailyHabits.innerHTML += `
-      <habit-element id=${id} title="${Habit}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
-    `;
-  });
+  daily.forEach(
+    ({ id, fields: { Habit, Tokens, Goal, Status, Icon, Period } }) => {
+      dailyHabits.innerHTML += `
+        <habit-element
+          goal="${Goal}"
+          icon="${Icon}"
+          id=${id}
+          period="${Period}"
+          status="${Status}"
+          title="${Habit}"
+          tokens="${Tokens}"
+        ></habit-element>
+      `;
+    },
+  );
   weeklyHabits.style.display = weekly.length ? "flex" : "none";
   habitsHeadings[1].style.display = weekly.length ? "block" : "none";
   weeklyHabits.innerHTML = "";
-  weekly.forEach(({ id, fields: { Habit, Tokens, Goal, Icon } }) => {
-    weeklyHabits.innerHTML += `
-      <habit-element id=${id} title="${Habit}" goal="${Goal}" tokens="${Tokens}" icon="${Icon}"></habit-element>
-    `;
-  });
+  weekly.forEach(
+    ({ id, fields: { Habit, Tokens, Goal, Status, Icon, Period } }) => {
+      weeklyHabits.innerHTML += `
+        <habit-element
+          goal="${Goal}"
+          icon="${Icon}"
+          id=${id}
+          period="${Period}"
+          status="${Status}"
+          title="${Habit}"
+          tokens="${Tokens}"
+        ></habit-element>
+      `;
+    },
+  );
 };
 
 initHabits();
