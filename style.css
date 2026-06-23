@@ -97,11 +97,13 @@ main {
 
 footer {
   background: var(--slate-gray);
+  bottom: 0;
   display: flex;
   justify-content: center;
+  left: 0;
   padding: 1rem;
   position: fixed;
-  bottom: 0;
+  right: 0;
 
   button {
     display: flex;
