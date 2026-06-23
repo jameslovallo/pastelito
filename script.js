@@ -87,7 +87,7 @@ tabs.forEach((tab, i) => {
 // habits
 
 const habitsTable = "tblPLgExBWfHgxOHb";
-const habitsElement = document.querySelector("#habits");
+const habitsElement = document.querySelector("#daily-habits");
 
 customElements.define(
   "habit-element",
