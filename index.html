@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Pen</title>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"
+          />
+        </svg>
+        <span id="token-count">0</span>
+      </div>
+      <img
+        src="https://scontent-det1-1.cdninstagram.com/v/t51.82787-15/671018313_18099405710281513_5207292392274148344_n.webp?_nc_cat=103&ig_cache_key=Mzg5NjAwMDg0MzUwMzcxNDc3OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=YnNJ5UvLdQwQ7kNvwFBW-vx&_nc_oc=AdpEQpcocH_ndleFAB3-Dl3FQqVlS6JKsWOjl3hXr9hLD_jtjhjPROKs4Of-CK1-ezc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-det1-1.cdninstagram.com&_nc_gid=Fl0tAeaX3ig_kDwbS92AXg&_nc_ss=7a22e&oh=00_Af-I-DXttvIBzq3yS_Q-EDFpxVVqvqrnA6OOzHAeULxhcQ&oe=6A39E5F1"
+      />
+      <div>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M22.5,2.09C21.6,3 20.13,3.73 18.31,4.25C16.59,2.84 14.39,2 12,2C9.61,2 7.41,2.84 5.69,4.25C3.87,3.73 2.4,3 1.5,2.09C1.53,3.72 2.35,5.21 3.72,6.4C2.63,8 2,9.92 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,9.92 21.37,8 20.28,6.4C21.65,5.21 22.47,3.72 22.5,2.09M7.5,8.5L10.5,10C10.5,10.8 9.8,11.5 9,11.5C8.2,11.5 7.5,10.8 7.5,10V8.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23M16.5,10C16.5,10.8 15.8,11.5 15,11.5C14.2,11.5 13.5,10.8 13.5,10L16.5,8.5V10Z"
+          />
+        </svg>
+        <span id="punishment-count">0</span>
+      </div>
+    </nav>
+    <main>
+      <div id="rewards">
+        <h2>Rewards Requested</h2>
+        <div id="rewards-requested"></div>
+        <h2>Rewards Available</h2>
+        <div id="rewards-available"></div>
+      </div>
+      <div id="habits"></div>
+      <div id="punishments">
+        <h2>Punishments Requested</h2>
+        <div id="punishments-requested"></div>
+        <h2>Punishments Available</h2>
+        <div id="punishments-available"></div>
+      </div>
+    </main>
+    <footer>
+      <button>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"
+          />
+        </svg>
+        Recompensas
+      </button>
+      <button class="active">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"
+          />
+        </svg>
+        Habitos
+      </button>
+      <button>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M22.5,2.09C21.6,3 20.13,3.73 18.31,4.25C16.59,2.84 14.39,2 12,2C9.61,2 7.41,2.84 5.69,4.25C3.87,3.73 2.4,3 1.5,2.09C1.53,3.72 2.35,5.21 3.72,6.4C2.63,8 2,9.92 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,9.92 21.37,8 20.28,6.4C21.65,5.21 22.47,3.72 22.5,2.09M7.5,8.5L10.5,10C10.5,10.8 9.8,11.5 9,11.5C8.2,11.5 7.5,10.8 7.5,10V8.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23M16.5,10C16.5,10.8 15.8,11.5 15,11.5C14.2,11.5 13.5,10.8 13.5,10L16.5,8.5V10Z"
+          />
+        </svg>
+        Castigos
+      </button>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
