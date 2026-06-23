@@ -88,6 +88,9 @@ main {
   #rewards,
   #habits,
   #punishments {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     min-width: 100%;
     padding: 1rem;
   }
@@ -100,7 +103,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    min-width: 100%;
+    max-width: 720px;
+    width: 100%;
   }
 
   habit-element svg {
