@@ -19,9 +19,9 @@
   "display": "fullscreen",
   "dir": "auto",
   "lang": "es-CO",
-  "name": "Obedience",
-  "short_name": "Obedience",
-  "start_url": "manupv.netlify.app",
-  "scope": "manupv.netlify.app",
+  "name": "Obediencia",
+  "short_name": "Obediencia",
+  "start_url": "https://manupv.netlify.app",
+  "scope": "https://manupv.netlify.app",
   "id": "manupv.netlify.app"
 }
