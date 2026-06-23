@@ -48,7 +48,6 @@ const accountTable = "tblVI2K5NPYjuqGHM";
 const getAccount = async () => {
   const { records } = await getRecords(accountTable);
   const id = records[0].id;
-  console.log(id);
   const { Tokens, Punishments } = records[0].fields;
   tokenCount.innerHTML = Tokens;
   punishmentCount.innerHTML = Punishments;
@@ -104,9 +103,7 @@ customElements.define(
         <div class="icon">
           <slot></slot>
         </div>
-        <div class="text">
-          <b>${title}</b>
-        </div>
+        <div class="text">${title}</div>
         <div class="status">${status}/${goal}</div>
         <button class="add" hidden="${status === goal}">
           <svg viewBox="0 0 24 24">
@@ -130,7 +127,6 @@ customElements.define(
             color: #ddd;
             display: grid;
             grid-template-columns: auto 1fr auto auto;
-            max-width: 600px;
             overflow: hidden;
             width: 100%;
             
@@ -143,7 +139,7 @@ customElements.define(
             .icon, .text, .status, button {
               align-items: center;
               display: flex;
-              padding: 1rem;
+              padding: 0.75rem;
             }
 
             button {
@@ -219,9 +215,7 @@ customElements.define(
       const requested = this.getAttribute("requested");
       const tokens = Number(this.getAttribute("tokens"));
       this.shadowRoot.innerHTML = `
-        <div class="text">
-          <b>${title}</b>
-        </div>
+        <div class="text">${title}</div>
         <div class="tokens">
           ${tokens}
         </div>
@@ -247,7 +241,6 @@ customElements.define(
             color: #ddd;
             display: grid;
             grid-template-columns: 1fr auto auto;
-            max-width: 600px;
             overflow: hidden;
             width: 100%;
             
@@ -260,7 +253,7 @@ customElements.define(
             .text, .tokens, button {
               align-items: center;
               display: flex;
-              padding: 1rem;
+              padding: 0.75rem;
             }
 
             button {
@@ -347,9 +340,7 @@ customElements.define(
       const requested = this.getAttribute("requested");
       const value = Number(this.getAttribute("value"));
       this.shadowRoot.innerHTML = `
-        <div class="text">
-          <b>${title}</b>
-        </div>
+        <div class="text">${title}</div>
         <div class="tokens">
           ${value}
         </div>
@@ -375,7 +366,6 @@ customElements.define(
             color: #ddd;
             display: grid;
             grid-template-columns: 1fr auto auto;
-            max-width: 600px;
             overflow: hidden;
             width: 100%;
             
@@ -388,7 +378,7 @@ customElements.define(
             .text, .tokens, button {
               align-items: center;
               display: flex;
-              padding: 1rem;
+              padding: 0.75rem;
             }
 
             button {
