@@ -46,6 +46,7 @@ const tokenCount = document.querySelector("#token-count");
 const punishmentCount = document.querySelector("#punishment-count");
 const heart = document.querySelector("#heart");
 const brokenHeart = document.querySelector("#broken-heart");
+const badGirl = document.querySelector("#bad-girl");
 
 const getAccount = async () => {
   const { records } = await getRecords(accountTable);
@@ -56,6 +57,7 @@ const getAccount = async () => {
   if (Punishments > 0) {
     heart.style.display = "none";
     brokenHeart.style.display = "block";
+    badGirl.style.display = "block";
   }
   return { id, Tokens, Punishments };
 };

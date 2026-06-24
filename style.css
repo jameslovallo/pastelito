@@ -69,6 +69,13 @@ nav {
   }
 }
 
+#bad-girl {
+  color: var(--rose-gold);
+  display: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
 main {
   align-items: start;
   display: flex;
