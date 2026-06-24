@@ -41,9 +41,11 @@ const createRecord = (table, fields) =>
 
 // top
 
+const accountTable = "tblVI2K5NPYjuqGHM";
 const tokenCount = document.querySelector("#token-count");
 const punishmentCount = document.querySelector("#punishment-count");
-const accountTable = "tblVI2K5NPYjuqGHM";
+const heart = document.querySelector("#heart");
+const brokenHeart = document.querySelector("#broken-heart");
 
 const getAccount = async () => {
   const { records } = await getRecords(accountTable);
@@ -51,13 +53,17 @@ const getAccount = async () => {
   const { Tokens, Punishments } = records[0].fields;
   tokenCount.innerHTML = Tokens;
   punishmentCount.innerHTML = Punishments;
+  if (Punishments > 0) {
+    heart.style.display = "none";
+    brokenHeart.style.display = "block";
+  }
   return { id, Tokens, Punishments };
 };
 
 getAccount();
 
 const updateTokens = async (v) => {
-  const { id, Tokens: tokens, Punishments } = await getAccount();
+  const { id, Tokens: tokens } = await getAccount();
   const Tokens = tokens + v;
   updateRecord(accountTable, id, { Tokens }).then(() => getAccount());
 };
